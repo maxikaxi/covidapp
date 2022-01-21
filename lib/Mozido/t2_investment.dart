@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'Puls_Analyse.dart';
 
 class T2_Investment extends StatefulWidget {
   T2_Investment({Key? key}) : super(key: key);
@@ -9,6 +9,8 @@ class T2_Investment extends StatefulWidget {
 }
 
 class _T2_InvestmentState extends State<T2_Investment> {
+  final GlobalKey<ScaffoldState> _Pulskey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +20,8 @@ class _T2_InvestmentState extends State<T2_Investment> {
       /// Appbar
       ///
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.dark
-        ),
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
         backgroundColor: Color(0xFF313237),
         centerTitle: true,
         title: Text(
@@ -44,11 +45,9 @@ class _T2_InvestmentState extends State<T2_Investment> {
             _card(Icons.emoji_emotions, "Emotionaler Zustand",
                 "Wie fühlen Sie sich heute? Beatworten Sie ein paar Fragen! ")
           ],
-
         ),
       ),
     );
-
   }
 
   ///
@@ -60,7 +59,10 @@ class _T2_InvestmentState extends State<T2_Investment> {
           top: 15.0, left: 15.0, right: 15.0, bottom: 5.0),
       child: InkWell(
         onTap: () {
-          // Navigator.of(context).push(PageRouteBuilder(pageBuilder: (_,__,___)=> new icoDetail()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Puls_Analyse(
+                    key: _Pulskey,
+                  )));
         },
         child: Container(
           width: double.infinity,
@@ -111,7 +113,6 @@ class _T2_InvestmentState extends State<T2_Investment> {
                             fontWeight: FontWeight.w800,
                             fontSize: 16.5),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0, right: 15.0),
                         child: Text(
