@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:covidapp/Mozido/login/constants.dart';
 import 'package:covidapp/Mozido/login/sign_in/components/contact.dart';
 
-
 import 'components/credentials.dart';
 import 'components/head_text.dart';
 
@@ -15,14 +14,14 @@ class SignUpScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
               colors: [
-                lightPrimary,
-                darkPrimary,
-              ]
-          )
-      ),
+            /*  lightPrimary,
+                darkPrimary, */
+            Color(0xFF31A1C9),
+            Color(0xEA1F3F48),
+          ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -31,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
             children: const [
               HeadText(),
               Credentials(),
-              Contact(),
+              //  Contact(),
             ],
           ),
         ),
