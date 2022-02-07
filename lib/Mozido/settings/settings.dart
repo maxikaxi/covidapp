@@ -31,7 +31,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
         SettingsSection(
-          title: Text('Account'),
+          title: const Text('Account'),
           tiles: [
             SettingsTile(
                 title: Text('Phone number'), leading: Icon(Icons.phone)),

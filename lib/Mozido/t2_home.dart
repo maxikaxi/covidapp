@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 't2_amount.dart';
-import 't2_investment.dart';
+import 't2_uebungen.dart';
 
 import 'login/sign_in/components/credentials.dart';
 import 'login/sign_in/signin.dart';
@@ -334,7 +334,7 @@ class DrawerLayout extends StatelessWidget {
                 InkWell(
                     onTap: () {
                       Navigator.of(context).push(PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => new T2_Investment()));
+                          pageBuilder: (_, __, ___) => new T2Uebungen()));
                     },
                     child: itemDrawer(Icons.style, "Übungen")),
                 InkWell(

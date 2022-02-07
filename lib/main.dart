@@ -1,7 +1,7 @@
 // @dart=2.9
 import 'package:covidapp/Mozido/login/wrapper.dart';
 import 'package:covidapp/Mozido/t2_amount.dart';
-import 'package:covidapp/Mozido/t2_investment.dart';
+import 'package:covidapp/Mozido/t2_uebungen.dart';
 import 'package:covidapp/Mozido/t2_search.dart';
 import 'package:covidapp/Mozido/t2_home.dart';
 import 'package:covidapp/Mozido/settings/settings.dart';

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Puls_Analyse.dart';
 
-class T2_Investment extends StatefulWidget {
-  T2_Investment({Key? key}) : super(key: key);
+class T2Uebungen extends StatefulWidget {
+  T2Uebungen({Key? key}) : super(key: key);
 
-  _T2_InvestmentState createState() => _T2_InvestmentState();
+  _T2UebungenState createState() => _T2UebungenState();
 }
 
-class _T2_InvestmentState extends State<T2_Investment> {
+class _T2UebungenState extends State<T2Uebungen> {
   final GlobalKey<ScaffoldState> _Pulskey = new GlobalKey<ScaffoldState>();
 
   @override
