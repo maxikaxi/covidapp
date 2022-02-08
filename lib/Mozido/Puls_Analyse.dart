@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter/services.dart';
+
 import 'Puls_Messung/chart.dart';
 import 'Puls_Messung/heart_bpm.dart';
 
@@ -20,9 +22,28 @@ class Puls_AnalyseState extends State<Puls_Analyse> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF313237),
+
+      ///
+      /// Appbar
+      ///
       appBar: AppBar(
-        title: Text('Heart BPM Demo'),
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
+        backgroundColor: Color(0xFF313237),
+        centerTitle: true,
+        title: Text(
+          "Puls Analyse",
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: "Sans",
+              fontSize: 17.0,
+              fontWeight: FontWeight.w600),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
+        elevation: 0.0,
       ),
+
       body: Column(
         children: [
           isBPMEnabled
@@ -47,25 +68,79 @@ class Puls_AnalyseState extends State<Puls_Analyse> {
                   //   child: BPMChart(data),
                   // ),
                 )
-              : SizedBox(),
+              : SizedBox(
+                  height: 30,
+                ),
           isBPMEnabled && data.isNotEmpty
               ? Container(
-                  decoration: BoxDecoration(border: Border.all()),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 5,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black,
+                        offset: const Offset(
+                          5.0,
+                          5.0,
+                        ),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0,
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: const Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
                   height: 180,
                   child: BPMChart(data),
                 )
               : SizedBox(),
+          SizedBox(
+            height: 10,
+          ),
           isBPMEnabled && bpmValues.isNotEmpty
               ? Container(
-                  decoration: BoxDecoration(border: Border.all()),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.lightBlue,
+                      width: 5,
+                    ),
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black,
+                        offset: const Offset(
+                          5.0,
+                          5.0,
+                        ),
+                        blurRadius: 10.0,
+                        spreadRadius: 2.0,
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: const Offset(0.0, 0.0),
+                        blurRadius: 0.0,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                  ),
                   constraints: BoxConstraints.expand(height: 180),
                   child: BPMChart(bpmValues),
                 )
-              : SizedBox(),
+              : SizedBox(
+                  height: 30,
+                ),
           Center(
             child: ElevatedButton.icon(
               icon: Icon(Icons.favorite_rounded),
-              label: Text(isBPMEnabled ? "Stop measurement" : "Measure BPM"),
+              label:
+                  Text(isBPMEnabled ? "Messung Anhalten" : "Puls Pro Minute"),
               onPressed: () => setState(() {
                 if (isBPMEnabled) {
                   isBPMEnabled = false;
@@ -80,120 +155,3 @@ class Puls_AnalyseState extends State<Puls_Analyse> {
     );
   }
 }
-
-
-
-
-
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-
-//       backgroundColor: Color(0xFF313237),
-
-//       ///
-//       /// Appbar
-//       ///
-//       appBar: AppBar(
-//         brightness: Brightness.dark,
-//         backgroundColor: Color(0xFF313237),
-//         centerTitle: true,
-//         title: Text(
-//           "Puls Übungen",
-//           style: TextStyle(
-//               color: Colors.white,
-//               fontFamily: "Sans",
-//               fontSize: 17.0,
-//               fontWeight: FontWeight.w600),
-//         ),
-//         iconTheme: IconThemeData(color: Colors.white),
-//         elevation: 15.0,
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: <Widget>[
-//             _card(Icons.air, "Puls Messung",
-
-//                 "Messen Sie hier ihren direkt ihren Puls "),
-//             _card(Icons.favorite, "Puls Empfehlung",
-//                 "Ihr Puls sollte gewissen Bereiche nicht überschreiten "),
-//           ],
-
-//         ),
-//       ),
-//     );
-
-//   }
-//   Widget _card(IconData _icon, String _title, String _desc) {
-//     return Padding(
-//       padding: const EdgeInsets.only(
-//           top: 100.0, left: 50, right: 80, bottom: 50),
-//       child: InkWell(
-//         onTap: () {
-        
-//         },
-//         child: Container(
-//           width: double.infinity,
-//           decoration: BoxDecoration(
-//               borderRadius: BorderRadius.all(Radius.circular(100.0)),
-//               color: Color(0xFF363940),
-//               boxShadow: [
-//                 BoxShadow(
-//                   color: Colors.black12,
-//                   blurRadius: 50.0,
-//                   spreadRadius: 23.0,
-//                 )
-//               ]),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: <Widget>[
-
-//               Padding(
-//                 padding: const EdgeInsets.only(top: 65.0),
-//                 child: Icon(
-//                   _icon,
-//                   color: Colors.white54,
-//                   size: 30.0,
-//                 ),
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.only(top: 25.0),
-//                 child: Container(
-//                   width: 250.0,
-//                   child: Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     crossAxisAlignment: CrossAxisAlignment.center,
-//                     children: <Widget>[
-//                       Text(
-//                         _title,
-//                         style: TextStyle(
-//                             color: Colors.white,
-//                             fontFamily: "Sans",
-//                             fontWeight: FontWeight.w800,
-//                             fontSize: 16.5),
-//                       ),
-
-//                       Padding(
-//                         padding: const EdgeInsets.only(top: 20.0, right: 15.0),
-//                         child: Text(
-//                           _desc,
-//                           style: TextStyle(
-//                               color: Colors.white54,
-//                               fontFamily: "Popins",
-//                               fontSize: 13.5),
-//                         ),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

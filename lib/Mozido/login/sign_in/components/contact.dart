@@ -1,9 +1,16 @@
+import 'package:covidapp/Mozido/t2_home.dart';
 import 'package:flutter/material.dart';
 import 'package:covidapp/Mozido/login/constants.dart';
 import 'package:covidapp/Mozido/login/sign_up/signup.dart';
 import 'package:covidapp/Mozido/login/widgets/account_check.dart';
 import 'package:covidapp/Mozido/login/widgets/rounded_button.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../../Puls_Analyse.dart';
+import '../../Uebungen_webview.dart';
+
+final GlobalKey<ScaffoldState> test = new GlobalKey<ScaffoldState>();
 
 class Contact extends StatelessWidget {
   const Contact({Key? key}) : super(key: key);
@@ -22,8 +29,8 @@ class Contact extends StatelessWidget {
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
               ),
               onPressed: () {
-                // Android: Will open mail app or show native picker.
-                // iOS: Will open mail app if single mail app found.
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => T2_home()));
               }),
         ),
         SizedBox(
@@ -48,5 +55,24 @@ class Contact extends StatelessWidget {
 
   void _launchURL() async {
     // if (!await launch("mailto:")) throw 'Could not launch $_url';
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
   }
 }

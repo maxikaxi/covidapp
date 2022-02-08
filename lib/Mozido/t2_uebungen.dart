@@ -1,6 +1,8 @@
+import 'package:covidapp/Mozido/t2_amount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Puls_Analyse.dart';
+import 'login/Uebungen_webview.dart';
 
 class T2Uebungen extends StatefulWidget {
   T2Uebungen({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class T2Uebungen extends StatefulWidget {
 
 class _T2UebungenState extends State<T2Uebungen> {
   final GlobalKey<ScaffoldState> _Pulskey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _Atem = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +62,22 @@ class _T2UebungenState extends State<T2Uebungen> {
           top: 15.0, left: 15.0, right: 15.0, bottom: 5.0),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => Puls_Analyse(
-                    key: _Pulskey,
-                  )));
+          if (_title == "Puls Analyse") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Puls_Analyse(
+                        key: _Pulskey,
+                      )),
+            );
+          }
+          if (_title == "Atem Übung") {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Webview()));
+          } else if (_title == "Emotionaler Zustand") {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => T2Amount()));
+          }
         },
         child: Container(
           width: double.infinity,
